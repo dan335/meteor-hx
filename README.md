@@ -1,4 +1,6 @@
 meteor-hx
 =========
 
-Hex functions
+Functions for working with hex grids.
+
+meteor add danimal:hx
