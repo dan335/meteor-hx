@@ -69,7 +69,7 @@ Hx = {
 	},
 
 
-	posToCoordinats: function(x, y, hexSize, hexSquish) {
+	posToCoordinates: function(x, y, hexSize, hexSquish) {
 		check(x, Number)
 		check(y, Number)
 
@@ -77,9 +77,9 @@ Hx = {
 		var r = (1/3 * (Math.sqrt(3) / hexSquish) * y - 1/3 * x) / hexSize
 
 		// just rounding doesn't work, must convert to cube coords then round then covert to axial
-		var cube = convertAxialToCubeCoordinates(q,r)
-		var round = roundCubeCoordinates(cube.x, cube.y, cube.z)
-		var axial = convertCubeToAxialCoordinates(round.x, round.y, round.z)
+		var cube = this.convertAxialToCubeCoordinates(q,r)
+		var round = this.roundCubeCoordinates(cube.x, cube.y, cube.z)
+		var axial = this.convertCubeToAxialCoordinates(round.x, round.y, round.z)
 
 		return {
 			x:axial.x,
@@ -150,11 +150,11 @@ Hx = {
 
 		var pos = {x:x, y:y}
 		for (var k=1; k<=numRings; k++) {
-			pos = get_neighbor(pos.x, pos.y, 4)
+			pos = this.getNeighbor(pos.x, pos.y, 4)
 			for (var i =  0; i < 6; i++) {		// change direction
 				for (var j = 0; j < k; j++) {		// number to get in this direction
 					hexes.push({x:pos.x, y:pos.y})
-					pos = get_neighbor(pos.x, pos.y, i)
+					pos = this.getNeighbor(pos.x, pos.y, i)
 				}
 			}
 		}
