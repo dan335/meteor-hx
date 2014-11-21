@@ -5,9 +5,6 @@ Functions for working with hex grids.  Used in http://dominusgame.net.
 
 meteor add danimal:hx
 
-<<<<<<< HEAD
-http://www.gamasutra.com/blogs/HermanTulleken/20140912/225495/20_Fun_Grid_Facts_Hex_Grids.php
-=======
 Exports Hx to client and server.
 
 * Hx.createHexGrid(numRings) - returns an array of hex coordinates [{x:0, y:0}, {x:1, y:0}]
@@ -22,4 +19,5 @@ Exports Hx to client and server.
 * Hx.getHexPolygonVerts(pos_x, pos_y, hex_size) - returns an array with positions of hex verts
 
 See http://www.redblobgames.com/grids/hexagons/ for info on hex grids.
->>>>>>> 5d90881e3e4b6748ef369338a775465293d88bf6
+
+http://www.gamasutra.com/blogs/HermanTulleken/20140912/225495/20_Fun_Grid_Facts_Hex_Grids.php
