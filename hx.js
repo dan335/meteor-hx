@@ -58,6 +58,9 @@ Hx = {
 	},
 
 
+	// This converts from the hex's coordinates to the position it should be drawn at. 
+	// HexSize is the radius of the hex. 
+	// HexSquish is how much the hexes should be squished vertically so that they appear to be viewed from an angle instead of straight down.
 	coordinatesToPos: function(x, y, hexSize, hexSquish) {
 		check(x, Number)
 		check(y, Number)
@@ -160,6 +163,31 @@ Hx = {
 		}
 
 		return hexes
+	},
+
+
+	// returns an array with positions of hex verts
+	// made to be used with svg
+	getHexPolygonVerts: function(pos_x, pos_y, hex_size) {
+		check(pos_x, Number)
+		check(pos_y, Number)
+		check(hex_size, Number)
+		
+		var points = ''
+		for (var i = 0; i < 6; i++) {
+			var angle = 2 * Math.PI / 6 * i
+
+			var point_x = (hex_size * Math.cos(angle)) + pos_x
+			var point_y = (hex_size * Math.sin(angle) * s.hex_squish) + pos_y
+
+			if (isNaN(point_x)) {
+				return false
+			}
+
+			if (i != 0) { points = points + ' '; }		// add space in-between if not first
+			points = points + point_x.toString() + ',' + point_y.toString()		// concat into string
+		}
+		return points
 	}
 
 
