@@ -16,7 +16,8 @@ Exports Hx to client and server.
 * Hx.roundCubeCoordinates(x,y,z)
 * Hx.hexDistance(x1, y1, x2, y2)
 * Hx.getSurroundingHexes(x, y, numRings) - returns array of x and y.  [{x:0, y:0}, {x:1, y:1}]
-* Hx.getHexPolygonVerts(pos_x, pos_y, hex_size) - returns an array with positions of hex verts
+* Hx.getHexPolygonVerts(pos_x, pos_y, hex_size) - returns an array with positions of hex verts [x y x y x y ...]
+* Hx.getHexVertPositions: function(pos_x, pos_y, hex_size, hex_squish) - returns an array with positions of hex verts [{x:x,y:y}, {x:x,y:y}, ...]
 
 See http://www.redblobgames.com/grids/hexagons/ for info on hex grids.
 
