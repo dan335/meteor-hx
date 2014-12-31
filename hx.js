@@ -168,6 +168,7 @@ Hx = {
 
 	// returns an array with positions of hex verts
 	// made to be used with svg
+	// [x y x y x y ...]
 	getHexPolygonVerts: function(pos_x, pos_y, hex_size, hex_squish) {
 		check(pos_x, Number)
 		check(pos_y, Number)
@@ -215,6 +216,40 @@ Hx = {
 			points.push(point)
 		}
 		return points
+	},
+
+
+	// get an array of hexes in a line between two hexes
+	getHexesAlongLine: function(from_x, from_y, to_x, to_y, hex_size, hex_squish) {
+		check(from_x, Number)
+		check(from_y, Number)
+		check(to_x, Number)
+		check(to_y, Number)
+
+		var self = this
+
+		var hexes = []
+
+		var from_pos = self.coordinatesToPos(from_x, from_y, hex_size, hex_squish)
+		var to_pos = self.coordinatesToPos(to_x, to_y, hex_size, hex_squish)
+
+		var distance = self.hexDistance(from_x, from_y, to_x, to_y)
+
+		if (distance == 0) {
+			return [{x:from_x, y:from_y}]
+		}
+
+		for (i = 0; i <= distance; i++) {
+			// pick points along line
+			var x = from_pos.x * (1 - i/distance) + to_pos.x * i/distance
+			var y = from_pos.y * (1 - i/distance) + to_pos.y * i/distance
+
+			var coords = self.posToCoordinates(x, y, s.hex_size, s.hex_squish)
+
+			hexes.push(coords)
+		}
+
+		return hexes
 	}
 
 

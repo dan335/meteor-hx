@@ -1,7 +1,7 @@
 Package.describe({
 	name: "danimal:hx",
 	summary: "Library for hex grids.",
-	version: "1.0.2",
+	version: "1.0.5",
 	git: "https://github.com/dan335/meteor-hx.git"
 });
 
