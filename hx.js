@@ -169,7 +169,10 @@ Hx = {
 	// returns an array with positions of hex verts
 	// made to be used with svg
 	// [x y x y x y ...]
-	getHexPolygonVerts: function(pos_x, pos_y, hex_size, hex_squish) {
+	// nearestHalfPixel = round to nearest 0.5.  So that a 1 pixel line drawn at 0.5 is 1 pixel high
+	getHexPolygonVerts: function(pos_x, pos_y, hex_size, hex_squish, nearestHalfPixel) {
+		var self = this
+
 		check(pos_x, Number)
 		check(pos_y, Number)
 		check(hex_size, Number)
@@ -186,6 +189,11 @@ Hx = {
 				return false
 			}
 
+			if (nearestHalfPixel) {
+				point_x = self.rountToNearestHalf(point_x)
+				point_y = self.rountToNearestHalf(point_y)
+			}
+
 			if (i != 0) { points = points + ' '; }		// add space in-between if not first
 			points = points + point_x.toString() + ',' + point_y.toString()		// concat into string
 		}
@@ -195,7 +203,7 @@ Hx = {
 
 	// returns [{x:x,y:y}, {x:x,y:y}, ...]
 	// made to use with canvas
-	getHexVertPositions: function(pos_x, pos_y, hex_size, hex_squish) {
+	getHexVertPositions: function(pos_x, pos_y, hex_size, hex_squish, nearestHalfPixel) {
 		check(pos_x, Number)
 		check(pos_y, Number)
 		check(hex_size, Number)
@@ -211,6 +219,11 @@ Hx = {
 
 			if (isNaN(point.x) || isNaN(point.y)) {
 				return false
+			}
+
+			if (nearestHalfPixel) {
+				point.x = self.rountToNearestHalf(point.x)
+				point.y = self.rountToNearestHalf(point.y)
 			}
 
 			points.push(point)
@@ -250,6 +263,13 @@ Hx = {
 		}
 
 		return hexes
+	},
+
+
+	rountToNearestHalf: function(num) {
+		num += 0.5
+		num = Math.round(num)
+		return num - 0.5
 	}
 
 

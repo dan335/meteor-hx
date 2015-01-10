@@ -16,8 +16,8 @@ Exports Hx to client and server.
 * Hx.roundCubeCoordinates(x,y,z)
 * Hx.hexDistance(x1, y1, x2, y2)
 * Hx.getSurroundingHexes(x, y, numRings) - returns array of x and y.  [{x:0, y:0}, {x:1, y:1}]
-* Hx.getHexPolygonVerts(pos_x, pos_y, hex_size) - returns an array with positions of hex verts [x y x y x y ...]
-* Hx.getHexVertPositions(pos_x, pos_y, hex_size, hex_squish) - returns an array with positions of hex verts [{x:x,y:y}, {x:x,y:y}, ...]
+* Hx.getHexPolygonVerts(pos_x, pos_y, hex_size, hex_squish, nearestHalfPixel) - returns an array with positions of hex verts [x y x y x y ...]. NearestHalfPixel rounds points to the nearest 0.5 pixel so that lines don't alias.
+* Hx.getHexVertPositions(pos_x, pos_y, hex_size, hex_squish, nearestHalfPixel) - returns an array with positions of hex verts [{x:x,y:y}, {x:x,y:y}, ...]
 * Hx.getHexesAlongLine(from_x, from_y, to_x, to_y, hex_size, hex_squish) - returns an array with coordinates of hexes along a line between two hexes. [{x:x,y:y}, {x:x,y:y}, ...]
 
 See http://www.redblobgames.com/grids/hexagons/ for info on hex grids.
