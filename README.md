@@ -3,9 +3,15 @@ meteor-hx
 
 Functions for working with hex grids.  Used in http://dominusgame.net.
 
+Instalation
+=========
+
 meteor add danimal:hx
 
 Exports Hx to client and server.
+
+Usage
+=========
 
 * Hx.createHexGrid(numRings) - returns an array of hex coordinates [{x:0, y:0}, {x:1, y:0}]
 * Hx.getNeighbor(x, y, direction) - returns {x:integer, y:integer}
