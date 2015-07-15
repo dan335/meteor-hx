@@ -257,7 +257,7 @@ Hx = {
 			var x = from_pos.x * (1 - i/distance) + to_pos.x * i/distance
 			var y = from_pos.y * (1 - i/distance) + to_pos.y * i/distance
 
-			var coords = self.posToCoordinates(x, y, s.hex_size, s.hex_squish)
+			var coords = self.posToCoordinates(x, y, hex_size, hex_squish)
 
 			hexes.push(coords)
 		}
