@@ -1,4 +1,32 @@
+// hexSize is the radius of a hex
+// hexSquish is 0 - 1.  1 is a perfect hex
+
 Hx = {
+	// width and height of one hex
+	hexDimensions: function(hexSize, hexSquish) {
+		check(hexSize, Number);
+		check(hexSquish, Number);
+
+		return {
+			width: hexSize * 2,
+			height: hexSize * (Math.sqrt(3) / 2 * hexSquish) * 2
+		}
+	},
+
+	// distance from midpoint of a hex to midpoint of next hex
+	// horizontally and vertically
+	distanceBetweenHexes: function(hexSize, hexSquish) {
+		check(hexSize, Number);
+		check(hexSquish, Number);
+
+		var dim = this.hexDimensions(hexSize, hexSquish);
+
+		return {
+			horiz: dim.width * 3/4,
+			vert: dim.height
+		}
+	},
+
 	// starts at 0,0
 	// adds rings
 	// returns an array of hex coordinates [{x:0, y:0}, {x:1, y:0}]
@@ -25,7 +53,12 @@ Hx = {
 	},
 
 
-
+	// 0 - down right
+	// 1 - up right
+	// 2 - up
+	// 3 - up left
+	// 4 - down left
+	// 5 - down
 	getNeighbor: function(x, y, direction) {
 		check(x, Number)
 		check(y, Number)
